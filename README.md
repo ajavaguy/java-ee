@@ -1,1 +1,15 @@
-# java-ee
+- What is Java EE?
+    - Set of API specifications.
+    - Support development of enterprise: data persistence, building REST API, Dependency Injection, Security... 
+- Java EE APIs:
+    -  JSF, JSTL, JSP, JAX-RS 2.1, Servlet 4.0, WebSocket 1.0, CDI 2.0, EL 3.0, Bean Validation 2.0, JSON-B 1.0, JSON-P 1.1, JPA 2.2, EJB 3.2, JMS 2.0, Security 1.0
+-  Servlet API
+    - Servlet run in a Servlet Container, which is a web or an application server for receiving responses and sending requests (HTTP requests sent by browser).
+    - Provides request-handing HTTP methods like GET, POST
+    - Asynchronous processing of requests.
+    - HttpServletRequest, HttpServletResponse, HttpSession, Cookie, ServletContext (communicate with Servlet Container), Filter.
+- HTTP Message:
+    - Headers
+    - Cookies
+    - Body
+- 

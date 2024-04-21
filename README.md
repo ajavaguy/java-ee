@@ -12,4 +12,10 @@
     - Headers
     - Cookies
     - Body
-- 
+- Filter:
+      - Sits in front of Servlet to allow transformations to be applied to request and responses process by Java EE application.
+- Asynchronous:
+      - asyncSupported = true for @WebServlet.
+      - All filters are need to set asyncSupported = true as well.
+      - AsyncContext asyncContext = request.startAsync();
+      - Task which is processed by async is processed by another thread.

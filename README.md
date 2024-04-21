@@ -19,3 +19,8 @@
     - All filters are need to set asyncSupported = true as well.
     - AsyncContext asyncContext = request.startAsync();
     - Task which is processed by async is processed by another thread.
+- JSP:
+    - JSTL
+    - EL (Expression Language)
+- JSF:
+    - 

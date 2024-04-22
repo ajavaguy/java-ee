@@ -23,4 +23,22 @@
     - JSTL
     - EL (Expression Language)
 - JSF:
-    - 
+- EJBs (Enterprise Java Beans): are APIs within Java EE that provide a standard component architecture for building object-oriented business applications.
+    - An EJB is Java class or POJO.
+    - Isolates system business logic.
+    - Managed by an EJB container.
+    - Injected into other Java EE components through a JNDI so they can be centralized and reused.
+    - EJB Benefits:
+        - Transaction
+        - Security
+        - Concurrency
+        - Persistence
+    - EJB types:
+        - Session Bean:
+            - Contains business logic that models an action or use case
+            - Stateful: Unique for every client 
+            - Stateless: Shared for every client and does not containts any state
+            - Singleton: Shared for every client at an application level.
+        - Message Driven Bean:
+           - Bean that processes messages send by other components
+           - Are stateless components that run on the server side for processing messages delivered by Java Messaging Service.

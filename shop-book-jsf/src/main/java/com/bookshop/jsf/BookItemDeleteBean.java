@@ -6,6 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.shopbook.BookItem;
+
 @Named
 @RequestScoped
 public class BookItemDeleteBean implements Serializable {

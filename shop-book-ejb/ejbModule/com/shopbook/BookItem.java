@@ -1,4 +1,4 @@
-package com.bookshop.jsf;
+package com.shopbook;
 
 import java.time.LocalDate;
 

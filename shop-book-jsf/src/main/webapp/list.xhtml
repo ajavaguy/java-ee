@@ -5,10 +5,15 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 	<ui:composition template="/template.xhtml">
+		<f:metadata>
+			<f:viewAction action="#{bookItemFormBean.init()}"></f:viewAction>
+		</f:metadata>
+	
 		<ui:define name="pageHeader">
 			<h:link value="#{msg['form.pageTitle']}" outcome="form"></h:link> |
 			<h:link value="#{msg['list.pageTitle']}" outcome="list"></h:link>
 		</ui:define>
+		
 		<ui:define name="body">
 			<h:dataTable value="#{bookItemFormBean.items}" var="item">
 				<h:column>

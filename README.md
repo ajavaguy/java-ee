@@ -42,3 +42,16 @@
         - Message Driven Bean:
            - Bean that processes messages send by other components
            - Are stateless components that run on the server side for processing messages delivered by Java Messaging Service.
+ - CDI (Context and Dependency Injection): Bean and Dependency Injection
+     - Bean: Instantiated, managed, and injected by a container. Injected into servlet, other beans, JAX-RS resources
+     - CDI: Provides a standard Dependency Injection framework, improves structure of application code, manages beans.
+     - Discovery Mode:
+         - Explicit: Contains a beans.xml file with bean-discovery-mode=all -> no longer need to annotate any of our classes in order to make them beans, they'll automatically be created as a bean in the CDI container.
+         - Implicit: No beans.xml file. Contains one or more classes with a bean-defining annotation.
+     - Bean Scope:
+         - @Dependent: default
+         - @RequestScoped: A single http request
+         - @SessionScoped: Spans multiple http requests.
+         - @ApplicationScoped: Shared across the entire application.
+         - @ConversationScoped:
+     - @Qualifier: Used to solve ambiguity among beans of the same types, indicates a particular bean instance should be injected.  

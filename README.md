@@ -66,4 +66,16 @@
          - Achieve it by using @Produces and @Alternative
      - Intercepter method:
          - Allows developer to implement cross-cutting concern such as logging, auditing, security. To create a intercepter method.
-         - Achieve this by creating a annotation with @IntercepterBinding, then creating a class with the annotation just created and @Intercepter
+         - Achieve this by creating a annotation with @IntercepterBinding, then creating a class with the annotation just created and @Intercepter.
+- JPA (Java Persistence API): is Java EE API for accessing, persisting, and managing java object and a relational database.
+    - JPA is just a specification or API, the underlying implementation is built by JPA providers. The most popular implematation of JPA is hibernate.
+    - EntityManager:
+       - Manages entities within a persistence context, provices API for creating , updating, deleting, and querying entities from a relational DB.
+       - Management by container or application.
+    - JPA applications are packaged with persistence.xml file that provides configuration properties for the JPA provider and a defination of persistence units.
+    - Persistence unit is a logical grouping that contains metadata about the EntityManager. It contains all the information that can instruct an EntityManager on hw to persist the entities into a relational database.
+    - Persistence Context contains the entity instances and manages thheir life cycle.
+    - Entities in Persistence Context can the n be persisted to the ralational data store by an EntityManager.
+    - JPQL (Java Persistence Query Language)
+       - Queries entities as apposed to the database schema.
+    - Criteria Builder API

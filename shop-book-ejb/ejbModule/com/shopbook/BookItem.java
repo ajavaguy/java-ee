@@ -2,17 +2,36 @@ package com.shopbook;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="BOOK_ITEM")
 public class BookItem {
+	@Id
+	@Column(name="BOOK_ITEM_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long itemId;
+	
+	@Column(name="NAME")
 	private String name;
+	
+	@Column(name="MANUFACTURER")
 	private String manufacturer;
+	
+	@Column(name="DESCRIPTION")
 	private String description;
+	
+	@Column(name="AVAILABLE_DATE")
 	private LocalDate availableDate;
 	
 	public BookItem() {}
 
-	public BookItem(long itemId, String name, String manufacturer, String description, LocalDate availableDate) {
-		this.itemId = itemId;
+	public BookItem(String name, String manufacturer, String description, LocalDate availableDate) {
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.description = description;

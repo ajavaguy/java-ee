@@ -5,16 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 
-@ApplicationScoped
-@Named("localInventoryService")
+//@Named("remoteInventoryService")
+//@RemoteService
 //@Alternative
-public class LocalInventoryService implements InventoryService, Serializable {
-
+public class RemoteInventoryService implements InventoryService, Serializable {
 	private static final long serialVersionUID = 1L;
 	private Map<Long, InventoryItem> items = new HashMap<>();
 	

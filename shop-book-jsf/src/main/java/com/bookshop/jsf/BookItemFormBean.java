@@ -19,10 +19,12 @@ public class BookItemFormBean implements Serializable {
 	private BookItem item = new BookItem();
 	private List<BookItem> items = new ArrayList<>();
 	
-	@EJB
+	@Inject
 	private ShopBookLocal bookLocal;
 	
 	@Inject
+	@Named("localInventoryService")
+	//@RemoteService
 	private InventoryService inventoryService;
 	
 //	public String addItem() {
@@ -31,9 +33,10 @@ public class BookItemFormBean implements Serializable {
 //		return "list?faces-redirect=true";
 //	}
 	
+	@Logging
 	public String addItem() {
-		long itemId = this.bookLocal.getItems().size() + 1;
-		this.bookLocal.getItems().add(new BookItem(itemId, item.getName(), item.getManufacturer(), item.getDescription(), item.getAvailableDate()));
+		//long itemId = this.bookLocal.getItems().size() + 1;
+		this.bookLocal.getItems().add(new BookItem(item.getName(), item.getManufacturer(), item.getDescription(), item.getAvailableDate()));
 		
 		this.inventoryService.createItem(item.getItemId(), item.getName());
 		return "list?faces-redirect=true";

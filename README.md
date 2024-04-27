@@ -44,7 +44,13 @@
            - Are stateless components that run on the server side for processing messages delivered by Java Messaging Service.
  - CDI (Context and Dependency Injection): Bean and Dependency Injection
      - Bean: Instantiated, managed, and injected by a container. Injected into servlet, other beans, JAX-RS resources
-     - CDI: Provides a standard Dependency Injection framework, improves structure of application code, manages beans.
+     - CDI:
+         - Provides a standard Dependency Injection framework, improves structure of application code, manages beans.
+         - There are 3 ways to inject a bean into another
+            - @Inject
+            - @Named if there are many types of a Bean
+            - @Qualifier
+            - @Producer
      - Discovery Mode:
          - Explicit: Contains a beans.xml file with bean-discovery-mode=all -> no longer need to annotate any of our classes in order to make them beans, they'll automatically be created as a bean in the CDI container.
          - Implicit: No beans.xml file. Contains one or more classes with a bean-defining annotation.
@@ -54,4 +60,10 @@
          - @SessionScoped: Spans multiple http requests.
          - @ApplicationScoped: Shared across the entire application.
          - @ConversationScoped:
-     - @Qualifier: Used to solve ambiguity among beans of the same types, indicates a particular bean instance should be injected.  
+     - @Qualifier: Used to solve ambiguity among beans of the same types, indicates a particular bean instance should be injected.
+     - @Producer:
+         - If a bean needs to be determined dynamically at runtime or when an object requires special instances logic.
+         - Achieve it by using @Produces and @Alternative
+     - Intercepter method:
+         - Allows developer to implement cross-cutting concern such as logging, auditing, security. To create a intercepter method.
+         - Achieve this by creating a annotation with @IntercepterBinding, then creating a class with the annotation just created and @Intercepter

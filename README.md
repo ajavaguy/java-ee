@@ -79,3 +79,7 @@
     - JPQL (Java Persistence Query Language)
        - Queries entities as apposed to the database schema.
     - Criteria Builder API
+- Bean Validation:
+    - Built-in constraints: @Size (min, max), @Blank, @Pattern, @Future @Past for Date, @Email for email, @AssertTrue for boolean, @Nagative, @Positive
+    - Custom validation annotation: creating an annotation with @Pattern.List()
+    - Custom constrain validator: adding a ConstraintValidator class that implements from an annotation class with @Constraint

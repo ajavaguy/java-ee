@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition template="/template.xhtml">
+		<f:metadata>
+			<f:viewParam name="itemId" value="#{bookItemDetailBean.itemId}"></f:viewParam>
+			<f:event listener="#{bookItemDetailBean.fetchItem()}" type="preRenderView"></f:event>
+		</f:metadata>
+	
+		<ui:define name="pageHeader">
+			<h:link value="#{msg['form.pageTitle']}" outcome="form"></h:link> |
+			<h:link value="#{msg['list.pageTitle']}" outcome="list"></h:link>
+		</ui:define>
+		
+		<ui:define name="body">
+		
+			<div>
+				<h3>Item Details</h3>
+				<div>
+					<h:outputText value="Name:"></h:outputText>
+					<h:outputText value="#{bookItemDetailBean.item.name}"></h:outputText>
+				</div>
+				<div>
+					<h:outputText value="Manufacturer:"></h:outputText>
+					<h:outputText value="#{bookItemDetailBean.item.manufacturer}"></h:outputText>
+				</div>
+				<div>
+					<h:outputText value="Available Date:"></h:outputText>
+					<h:outputText value="#{bookItemDetailBean.item.availableDate}">
+						<f:convertDateTime type="localDate" pattern="dd-MM-yyyy"></f:convertDateTime>
+					</h:outputText>
+				</div>
+			</div>
+			
+			<h3>Managers</h3>
+			<h:panelGroup id="managerList">
+				<ui:repeat value="#{bookItemDetailBean.item.itemManagers}" varStatus="status">
+					<h:outputText value="#{bookItemDetailBean.item.itemManagers[status.index].firstName}"></h:outputText>
+					<h:outputText value="#{bookItemDetailBean.item.itemManagers[status.index].lastName}"></h:outputText>
+					<br />
+					<br />
+				</ui:repeat>
+			</h:panelGroup>
+			
+			<h:form>
+				<h3>Add a Item Manager</h3>
+				<div>
+					<h:outputLabel value="First Name"/>
+					<h:inputText id="firstName" value="#{bookItemDetailBean.itemManager.firstName}"/>
+					<br />
+					<br />
+					<h:commandButton value="Submit" action="#{bookItemDetailBean.addManager()}">
+						<f:ajax execute="firstName lastName" render="managerList"></f:ajax>
+					</h:commandButton>
+				</div>
+			</h:form>
+			
+		</ui:define>
+	</ui:composition>
+</html>

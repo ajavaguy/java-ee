@@ -34,4 +34,27 @@ public class ShopBook implements ShopBookLocal {
 		this.entityManager.persist(item);
 	}
 
+	@Override
+	public BookItem findItemBy(long itemId) {
+		return this.entityManager.find(BookItem.class, itemId);
+	}
+
+	@Override
+	public void deleteItemBy(BookItem bookItem) {
+		BookItem removeItem = this.entityManager.contains(bookItem) ? bookItem : this.entityManager.merge(bookItem);
+		this.entityManager.remove(removeItem);
+	}
+
+	@Override
+	public List<BookItem> searchByName(String name) {
+		return this.entityManager.createQuery("select c from BookItem c where c.name like :name", BookItem.class)
+				.setParameter("name", "%" + name + "%")
+				.getResultList();
+	}
+
+	@Override
+	public void saveItem(BookItem bookItem) {
+		this.entityManager.merge(bookItem);
+	}
+
 }

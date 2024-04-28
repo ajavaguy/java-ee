@@ -35,6 +35,12 @@ public class BookItemFormBean implements Serializable {
 //		return "list?faces-redirect=true";
 //	}
 	
+	private String searchText;
+	
+	public void searchByName() {
+		this.items = this.bookLocal.searchByName(searchText);
+	}
+	
 	@Logging
 	public String addItem() {
 		//long itemId = this.bookLocal.getItems().size() + 1;
@@ -61,6 +67,14 @@ public class BookItemFormBean implements Serializable {
 	
 	public void setItems(List<BookItem> items) {
 		this.items = items;
+	}
+
+	public String getSearchText() {
+		return searchText;
+	}
+
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
 	}
 	
 }

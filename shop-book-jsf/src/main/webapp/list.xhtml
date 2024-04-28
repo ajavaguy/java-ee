@@ -15,7 +15,22 @@
 		</ui:define>
 		
 		<ui:define name="body">
-			<h:dataTable value="#{bookItemFormBean.items}" var="item">
+		
+			<h:form>
+				<h:outputLabel value="Search by name"/>	
+				<h:inputText id="searchInput" value="#{bookItemFormBean.searchText}"/>
+				<h:commandButton action="#{bookItemFormBean.searchByName}" value="Search">
+					<f:ajax execute="searchInput" render="dataTable"/>
+				</h:commandButton>
+			</h:form>
+		
+			<h:dataTable value="#{bookItemFormBean.items}" var="item" id="dataTable">
+				<h:column>
+					<f:facet name="header">Name</f:facet>
+					<h:link value="#{item.name}" outcome="item">
+						<f:param name="itemId" value="#{item.itemId}"></f:param>
+					</h:link>
+				</h:column>
 				<h:column>
 					<f:facet name="header">Name</f:facet>
 					<h:outputText value="#{item.name}"></h:outputText>

@@ -2,14 +2,17 @@ package com.bookshop.jsf;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.shopbook.BookItem;
+import com.shopbook.ShopBookLocal;
 
 @Named
-@RequestScoped
+@ConversationScoped
 public class BookItemDeleteBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,16 +23,26 @@ public class BookItemDeleteBean implements Serializable {
 	@Inject
 	private BookItemFormBean bookItemFormBean;
 	
+	@Inject
+	private ShopBookLocal bookLocal;
+	
+	@Inject
+	private Conversation conversation;
+	
 	public void fetchItem() {
-		this.item = this.bookItemFormBean.getItems()
-				.stream()
-				.filter(item -> item.getItemId() == itemId)
-				.findFirst()
-				.orElse(null);
+//		this.item = this.bookItemFormBean.getItems()
+//				.stream()
+//				.filter(item -> item.getItemId() == itemId)
+//				.findFirst()
+//				.orElse(null);
+		conversation.begin();
+		this.item = this.bookLocal.findItemBy(itemId);
 	}
 	
 	public String removeItem() {
-		this.bookItemFormBean.getItems().removeIf(item -> item.getItemId() == itemId);
+		//this.bookItemFormBean.getItems().removeIf(item -> item.getItemId() == itemId);
+		this.bookLocal.deleteItemBy(item);
+		conversation.end();
 		return "list?faces-redirect=true";
 	}
 

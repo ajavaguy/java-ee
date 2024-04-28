@@ -1,12 +1,19 @@
 package com.shopbook;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +35,11 @@ public class BookItem {
 	
 	@Column(name="AVAILABLE_DATE")
 	private LocalDate availableDate;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(joinColumns = @JoinColumn(name = "BOOK_ITEM_ID"), 
+					inverseJoinColumns = @JoinColumn(name = "ITEM_MANAGER_ID"))
+	private List<ItemManager> itemManagers = new ArrayList<>();
 	
 	public BookItem() {}
 
@@ -77,6 +89,14 @@ public class BookItem {
 
 	public void setAvailableDate(LocalDate availableDate) {
 		this.availableDate = availableDate;
+	}
+
+	public List<ItemManager> getItemManagers() {
+		return itemManagers;
+	}
+
+	public void setItemManagers(List<ItemManager> itemManagers) {
+		this.itemManagers = itemManagers;
 	}
 	
 }

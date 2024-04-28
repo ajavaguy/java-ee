@@ -21,6 +21,7 @@ public class LocalInventoryService implements InventoryService, Serializable {
 	@Override
 	@Logging
 	public void createItem(Long bookItemId, String name) {
+		System.out.println("Local Inventory Service");
 		long inventoryId = items.size() + 1;
 		this.items.put(bookItemId, new InventoryItem(inventoryId, bookItemId, name, 0L));
 	}

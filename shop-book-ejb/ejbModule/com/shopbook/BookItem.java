@@ -32,6 +32,7 @@ public class BookItem {
 	public BookItem() {}
 
 	public BookItem(String name, String manufacturer, String description, LocalDate availableDate) {
+		super();
 		this.name = name;
 		this.manufacturer = manufacturer;
 		this.description = description;

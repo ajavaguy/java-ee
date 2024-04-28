@@ -6,7 +6,7 @@ import javax.enterprise.inject.Produces;
 
 public class InventoryServiceFactory {
 
-	@Produces
+	//@Produces
 	public InventoryService inventoryService() {
 		return LocalDateTime.now().getHour() > 12 
 				? new LocalInventoryService()

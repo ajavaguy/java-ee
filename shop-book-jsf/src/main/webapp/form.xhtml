@@ -12,25 +12,36 @@
 		<ui:define name="body">
 			<h:form id="item-form">
 				<div>
-					<h:outputLabel value="Name"/>
-					<h:inputText id="name" value="#{bookItemFormBean.item.name}">
+					<h:outputLabel value="Product Name"/>
+					<h:inputText id="productName" value="#{bookItemFormBean.item.name}">
 						<f:validateRegex pattern="[A-Za-z0-9 ]+"></f:validateRegex>
 					</h:inputText>
-					<h:message for="name"></h:message>
+					<div class="errorMessage">
+						<h:message for="productName"></h:message>
+					</div>
 				</div>
 				<div>
 					<h:outputLabel value="Manufacturer"/>
 					<h:inputText id="manufacturer" value="#{bookItemFormBean.item.manufacturer}"/>
+					<div class="errorMessage">
+						<h:message for="manufacturer"></h:message>
+					</div>
 				</div>
 				<div>
 					<h:outputLabel value="Available Date"/>
 					<h:inputText id="availableDate" value="#{bookItemFormBean.item.availableDate}">
 						<f:convertDateTime type="localDate" pattern="dd-MM-yyyy"></f:convertDateTime>
 					</h:inputText>
+					<div class="errorMessage">
+						<h:message for="availableDate"></h:message>
+					</div>
 				</div>
 				<div>
 					<h:outputLabel value="Description"/>
 					<h:inputTextarea id="description" value="#{bookItemFormBean.item.description}"/>
+					<div class="errorMessage">
+						<h:message for="description"></h:message>
+					</div>			
 				</div>
 				<h:commandButton value="list" action="#{bookItemFormBean.addItem()}"/>
 			</h:form>

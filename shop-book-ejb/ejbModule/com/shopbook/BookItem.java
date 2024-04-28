@@ -15,6 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="BOOK_ITEM")
@@ -24,18 +28,25 @@ public class BookItem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long itemId;
 	
+	@NotBlank
 	@Column(name="NAME")
 	private String name;
 	
+	//@Pattern(regexp = "^[A-Za-z]*$", message = "Must be letters")
+	@Alphabetic
 	@Column(name="MANUFACTURER")
 	private String manufacturer;
 	
+	//@Pattern(regexp = "^[A-Za-z]{5,10}$", message = "Must be letters")
+	@PermitterManufacturer
 	@Column(name="DESCRIPTION")
 	private String description;
 	
+	@Future
 	@Column(name="AVAILABLE_DATE")
 	private LocalDate availableDate;
 	
+	@Size(min = 0, max = 3)
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(joinColumns = @JoinColumn(name = "BOOK_ITEM_ID"), 
 					inverseJoinColumns = @JoinColumn(name = "ITEM_MANAGER_ID"))

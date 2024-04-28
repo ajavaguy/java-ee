@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name="ITEM_MANAGER")
@@ -25,6 +26,10 @@ public class ItemManager {
 	
 	@Column(name = "LAST_NAME")
 	private String lastName;
+	
+	@Email
+	@Column(name = "EMAIL")
+	private String email;
 	
 	@ManyToMany(mappedBy = "itemManagers")
 	private List<BookItem> bookItems = new ArrayList<>();
